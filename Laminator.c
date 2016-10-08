@@ -419,8 +419,8 @@ int main (void)
       loopcount0++;
       if (loopcount0 >= LOOPSTEP)
       {
-         sollwert = readKanal(2)>>2;
-         istwert = readKanal(1)>>2;
+         sollwert = readKanal(ADC_SOLL_KANAL)>>2;
+         istwert = readKanal(ADC_IST_KANAL)>>2;
          //sollwert = 88;
          OCR1A = istwert;
 

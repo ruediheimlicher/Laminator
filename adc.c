@@ -44,6 +44,8 @@ uint16_t readKanal(uint8_t derKanal) //Unsere Funktion zum ADC-Channel aus lesen
                                //zufällige Werte haben. Sonst kann Quatsch rauskommen
    //ADMUX=0;
    ADMUX = (derKanal&0x07);
+   
+   // inerne Ref 2.56V
    ADMUX |= (1<<REFS2);
    ADMUX |= (1<<REFS1);
   // Eigentliche Messung - Mittelwert aus 4 aufeinanderfolgenden Wandlungen
