@@ -12,9 +12,8 @@
 		1B5F45650D3FE08000258F08 /* adc.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = adc.c; sourceTree = "<group>"; };
 		1B5F45660D3FE08000258F08 /* adc.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = adc.h; sourceTree = "<group>"; };
 		1B5F456A0D3FE0A600258F08 /* lcd.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = lcd.c; sourceTree = "<group>"; };
-		1B5F456B0D3FE0A600258F08 /* lcd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = lcd.h; sourceTree = "<group>"; };
 		1BAA29C312BCBF33000C1294 /* Logfile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Logfile.txt; sourceTree = "<group>"; };
-		1BCC39A00D9446BF00A498C2 /* Laminator */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Laminator; sourceTree = "<group>"; };
+		1BCC39A00D9446BF00A498C2 /* Laminator_45 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Laminator_45; sourceTree = "<group>"; };
 		BD4175D21B5CF87F005AEEEF /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -22,7 +21,7 @@
 		08FB7794FE84155DC02AAC07 /* ¬´PROJECTNAME¬ª */ = {
 			isa = PBXGroup;
 			children = (
-				1BCC39A00D9446BF00A498C2 /* Laminator */,
+				1BCC39A00D9446BF00A498C2 /* Laminator_45 */,
 				01706F590A347F9A00E43B08 /* Makefile */,
 				0190E7A40A3800370006249A /* Laminator.c */,
 				1BAA29C312BCBF33000C1294 /* Logfile.txt */,
@@ -37,7 +36,6 @@
 			isa = PBXGroup;
 			children = (
 				BD4175D21B5CF87F005AEEEF /* defines.h */,
-				1B5F456B0D3FE0A600258F08 /* lcd.h */,
 				1B5F456A0D3FE0A600258F08 /* lcd.c */,
 				1B5F45650D3FE08000258F08 /* adc.c */,
 				1B5F45660D3FE08000258F08 /* adc.h */,
@@ -82,7 +80,7 @@
 			buildConfigurationList = 01706F550A347F8800E43B08 /* Build configuration list for PBXLegacyTarget "Make" */;
 			buildPhases = (
 			);
-			buildToolPath = /Developer/usr/bin/make;
+			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
@@ -96,7 +94,7 @@
 			buildConfigurationList = 01706F660A34808D00E43B08 /* Build configuration list for PBXLegacyTarget "Program" */;
 			buildPhases = (
 			);
-			buildToolPath = /Developer/usr/bin/make;
+			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
@@ -110,7 +108,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0710;
 			};
 			buildConfigurationList = 01706F350A34762900E43B08 /* Build configuration list for PBXProject "Laminator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -166,6 +164,8 @@
 		01706F360A34762900E43B08 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Development;
 		};

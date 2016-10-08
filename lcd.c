@@ -512,7 +512,7 @@ uint8_t komma : Offset im String, zeigt auf die Stelle an welcher das virtuelle
 uint8_t frac  : Anzahl der Nachkommastellen
  
 */
- 
+ /*
  void lcd_puthex(uint8_t zahl)
 {
 	//char string[5];
@@ -542,7 +542,7 @@ uint8_t frac  : Anzahl der Nachkommastellen
 	
 	lcd_puts(string);
 }
-
+*/
 
 
  /*
