@@ -241,9 +241,9 @@ void timer0(void) //Takt der Messung
 
 ISR(TIMER0_COMPA_vect)
 {
-   //LOOPLEDPORT ^= (1<<LOOPLED_PIN);
+  // LOOPLEDPORT ^= (1<<LOOPLED_PIN);
    timercount0++;
-   if (timercount0 > 2) // Takt teilen, 1s
+//   if (timercount0 > 2) // Takt teilen, 1s
    {
       //OSZITOGG;
       //LOOPLEDPORT ^= (1<<LOOPLED_PIN);
@@ -270,7 +270,7 @@ ISR(TIMER0_COMPA_vect)
          timercount1 = 0;
          status |= (1<<PWM_ADC);// ADC messen ausloesen
          LOOPLEDPORT &= ~(1<<LOOPLED_PIN);
-         if (((uint8_t)stellwert>1) )
+         if (((uint8_t)stellwert >1 ) )
          {
             
             OUTPORT |= (1<<PWM_OUT_PIN); // Triac on
@@ -432,7 +432,7 @@ int main (void)
          {
             
             loopcount1 = 0;
-          //  LOOPLEDPORT ^=(1<<LOOPLED);
+    //        LOOPLEDPORT ^=(1<<LOOPLED_PIN);
             /*
             if (sollwert > istwert)
             {
@@ -447,7 +447,7 @@ int main (void)
       }
       
       
-      if (status & (1<<PWM_ADC)) // soll- und ist-werte lesen, PI aktualisieren
+      if (status & (1<<PWM_ADC)) // in ISR(TIMER0_COMPA_vect) gesetzt: soll- und ist-werte lesen, PI aktualisieren
       {
          //OSZILO;
          status &= ~(1<<PWM_ADC);
@@ -456,7 +456,7 @@ int main (void)
   //       istwert = readKanal(1)>>2;
 
 #pragma mark PID
-         if (istwert < sollwert/4*3)
+         if (istwert < sollwert/4*3) // istwert ist < 75% von sollwert, entspricht neustart mit nicht ganz kaltem Wasser
          {
             status |= (1<<PID_FIRST_RUN); // K Prop ist beim ersten Aufheizen kleiner
             
@@ -485,8 +485,9 @@ int main (void)
 #pragma mark stellwert
  
          
-         float k_prop = K_PROP_HI;
-         if (status & (1<<PID_FIRST_RUN))
+         float k_prop = K_PROP_HI; // grosser P-Anteil
+         
+         if (status & (1<<PID_FIRST_RUN)) // beim Aufheizen langsamer
          {
             k_prop = K_PROP_LO;
             
@@ -498,6 +499,11 @@ int main (void)
          }
          
          
+ //        stellwert = k_prop * fehler + K_INT * K_DELTA * fehlersumme  + K_DIFF*((fehler-lastfehler) /K_DELTA);
+ 
+ //        stellwert = K_PROP * fehler + K_INT_DIV_TIME * fehlersumme +   ((fehler-lastfehler) >> K_DIFF_TIME);
+         
+         // von Laminator_45
          stellwert = k_prop * fehler + K_INT * K_DELTA * fehlersumme  + K_DIFF*((fehler-lastfehler) /K_DELTA);
 
          stellwert *= PWM_FAKTOR;
